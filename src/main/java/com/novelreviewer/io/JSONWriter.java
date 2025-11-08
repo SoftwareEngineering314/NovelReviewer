@@ -1,28 +1,24 @@
 package com.novelreviewer.io;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.novelreviewer.model.Library;
+import com.novelreviewer.model.Novel;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 
 public class JSONWriter {
-    public void writeJSON(Map<String, List<Map<String, String>>> novels, String filepath) throws FileNotFoundException {
-        JSONObject jsonObject = new JSONObject();
-        for(Map.Entry<String, List<Map<String, String>>> entry : novels.entrySet()){
-            String novelname = entry.getKey();
-            List<Map<String, String>> values = entry.getValue();
-            jsonObject.put(novelname, values);
-        }
-        try {
-            PrintWriter writer = new PrintWriter(filepath);
-            writer.write(jsonObject.toJSONString());
-            writer.flush();
-            writer.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            throw new RuntimeException(e);
+
+    public void writeJSON(Library library, String filepath) throws IOException {
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileWriter writer = new FileWriter(filepath)) {
+
+            Map<String, Novel> novels = library.getNovels();
+            gson.toJson(novels, writer);
         }
     }
 }

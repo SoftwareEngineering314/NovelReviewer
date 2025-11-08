@@ -1,32 +1,42 @@
 package com.novelreviewer.io;
-import org.json.simple.parser.ParseException;
+
+import com.novelreviewer.model.Library;
+import com.novelreviewer.model.Novel;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestJSONParser {
+
     @Test
     public void testParseJSONFileThrows() {
         JSONParser parser = new JSONParser();
-        assertThrows(IOException.class, () -> {parser.parseJSONFile("src/test/resources/testdat5.json");});
-    }
-    @Test
-    public void testParseJSONFile() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
-        Map<String, List<Map<String, String>>> novels = parser.parseJSONFile("src/test/resources/testdata1.json");
 
-        // Example access
-        for (String name : novels.keySet()) {
-            System.out.println("Novel: " + name);
-            for (Map<String, String> info : novels.get(name)) {
-                for (String key : info.keySet()) {
-                    System.out.println("  " + key + " : " + info.get(key));
-                }
-            }
+        // Should throw IOException for a missing file
+        assertThrows(IOException.class, () -> {
+            parser.parseJSONFile("src/test/resources/nonexistent.json");
+        });
+    }
+
+    @Test
+    public void testParseJSONFile() throws IOException {
+        JSONParser parser = new JSONParser();
+        Library library = parser.parseJSONFile("src/test/resources/testdata1.json");
+
+        // Ensure something was parsed
+        assertNotNull(library);
+        assertFalse(library.getNovels().isEmpty(), "Library should contain novels");
+
+        // Example access: print for debugging
+        for (String title : library.getNovels().keySet()) {
+            Novel novel = library.getNovel(title);
+            System.out.println("Novel: " + title);
+            System.out.println("  Author : " + novel.getAuthor());
+            System.out.println("  Rating  : " + novel.getRating());
+            System.out.println("  Chapters: " + novel.getChapters());
         }
+
     }
 }

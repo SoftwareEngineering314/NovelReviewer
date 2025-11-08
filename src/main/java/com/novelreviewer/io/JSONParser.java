@@ -1,51 +1,26 @@
 package com.novelreviewer.io;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.novelreviewer.model.Library;
+import com.novelreviewer.model.Novel;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.lang.reflect.Type;
+import java.util.Map;
 
 public class JSONParser {
-    public Map<String, List<Map<String, String>>> parseJSONFile(String path) throws IOException, ParseException {
-        Map<String, List<Map<String, String>>> novels = new HashMap<>();
+
+    public Library parseJSONFile(String path) throws IOException {
+        Gson gson = new Gson();
+        Type type = new TypeToken<Map<String, Novel>>() {}.getType();
 
         try (FileReader reader = new FileReader(path)) {
-            org.json.simple.parser.JSONParser parser = new org.json.simple.parser.JSONParser();
-            JSONObject root = (JSONObject) parser.parse(reader);
-
-            for (Object keyObj : root.keySet()) {
-                String novelName = (String) keyObj;
-                JSONArray dataArray = (JSONArray) root.get(novelName);
-
-                List<Map<String, String>> dataList = getDataList(dataArray);
-
-                novels.put(novelName, dataList);
-            }
-
-        } catch (IOException | ParseException e) {
-            throw e;
+            Map<String, Novel> novelMap = gson.fromJson(reader, type);
+            Library library = new Library();
+            library.getNovels().putAll(novelMap);
+            return library;
         }
-        return novels;
-    }
-
-    private static List<Map<String, String>> getDataList(JSONArray dataArray) {
-        List<Map<String, String>> dataList = new ArrayList<>();
-        for (Object dataObj : dataArray) {
-            JSONObject dataEntry = (JSONObject) dataObj;
-            Map<String, String> map = new HashMap<>();
-            for (Object fieldKey : dataEntry.keySet()) {
-                String field = (String) fieldKey;
-                String value = (String) dataEntry.get(field);
-                map.put(field, value);
-            }
-            dataList.add(map);
-        }
-        return dataList;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

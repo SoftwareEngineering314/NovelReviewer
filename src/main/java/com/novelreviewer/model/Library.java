@@ -6,29 +6,25 @@ import java.util.List;
 import java.util.Map;
 
 public class Library {
-    private static Map<String, List<Map<String, String>>> novels = new HashMap<>();
+    private Map<String, Novel> novels = new HashMap<>();
 
-    public void addNovel(String title, String rating, String num_chapters, String author) {
-        Map<String, String> info = new HashMap<>();
-        info.put("Chapters", num_chapters);
-        info.put("Rating", rating);
-        info.put("Author", author);
-        List<Map<String, String>> data = new ArrayList<>();
-        data.add(info);
-        novels.put(title, data);
+    public void addNovelFromJson(String title, String json) {
+        this.novels.put(title, Novel.fromJson(json));
     }
-    public void removeNovel(String title){
-        novels.remove(title);
+
+    public Novel getNovel(String title) {
+        return this.novels.get(title);
     }
-    public static void loadNovels(Map<String, List<Map<String, String>>> loadedNovels) {
+
+    public Novel removeNovel(String title) {
+        return novels.remove(title);
+    }
+
+    public void clear() {
         novels.clear();
-        novels.putAll(loadedNovels);
-    }
-    public static  List<Map<String, String>> getNovel(String title) {
-        return novels.get(title);
-    }
-    public static Map<String, List<Map<String, String>>> getNovels() {
-        return novels;
     }
 
+    public Map<String, Novel> getNovels() {
+        return this.novels;
+    }
 }

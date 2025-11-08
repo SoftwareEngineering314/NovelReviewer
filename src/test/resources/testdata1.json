@@ -1,24 +1,15 @@
 {
-  "Tribulation of Myriad Races": [
+  "Tribulation of Myriad Races":
     {
-      "Chapters": "1600"
-    },
-    {
-      "Rating": "8.9"
-    },
-    {
+      "Chapters": "1600",
+      "Rating": "8.9",
       "Author": "Su Yu"
-    }
-  ],
-  "Lord of Mysteries": [
-    {
-      "Chapters": "1430"
     },
+
+  "Lord of Mysteries":
     {
-      "Rating": "9.2"
-    },
-    {
+      "Chapters": "1430",
+      "Rating": "9.2",
       "Author": "Cuttlefish That Loves Diving"
     }
-  ]
 }

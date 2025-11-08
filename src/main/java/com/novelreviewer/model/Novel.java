@@ -40,6 +40,7 @@ public class Novel {
     public String getChapters() {
         return chapters;
     }
+
     public void setChapters(String chapters) {
         this.chapters = chapters;
     }

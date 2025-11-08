@@ -8,8 +8,11 @@ import java.util.Map;
 public class Library {
     private Map<String, Novel> novels = new HashMap<>();
 
-    public void addNovelFromJson(String title, String json) {
+    public void addNovel(String title, String json) {
         this.novels.put(title, Novel.fromJson(json));
+    }
+    public void addNovel(String title, Novel novel){
+        this.novels.put(title, novel);
     }
 
     public Novel getNovel(String title) {

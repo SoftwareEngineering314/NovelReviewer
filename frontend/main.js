@@ -3,7 +3,9 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 function createWindow() {
-    const win = new BrowserWindow({
+    //win.webContents.openDevTools();
+
+    return new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
@@ -13,10 +15,6 @@ function createWindow() {
             sandbox: false
         }
     });
-
-    //win.webContents.openDevTools();
-
-    return win;
 }
 
 

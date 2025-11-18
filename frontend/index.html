@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+    <head>
+    <meta charset="UTF-8" />
+    <title>Hello from Electron renderer!</title>
+    </head>
+    <body>
+    <link rel = "stylesheet" type = "text/css" href = "styles.css" />
+    <form>
+    <div>
+        <label for=titleInput></label>
+        <input
+            type = "text"
+            id = titleInput
+            name = "title"
+            maxlength = "100"
+            placeholder = "Title"
+            required
+        />
+
+        <label for = authorInput></label>
+        <input
+                type = "text"
+                id = authorInput
+                name = "author"
+                maxlength = "16"
+                placeholder = "Author"
+                required
+        />
+        <label for = chapterInput></label>
+        <input
+            type = "number"
+            id = chapterInput
+            name = "chapters"
+            placeholder = "Chapters"
+            maxlength = "4"
+        >
+        <label for = ratingInput></label>
+        <input
+            type = "number"
+            id = ratingInput
+            name = "rating"
+            placeholder = "Rating"
+            maxlength = "2"
+        >
+    </div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th scope = "col">Title</th>
+                <th scope = "col">Author</th>
+                <th scope = "col">Chapters</th>
+                <th scope = "col">Rating</th>
+            </tr>
+        </thead>
+        <tbody contenteditable = "false" id = "novels">
+        </tbody>
+    </table>
+    <p> This is the NovelReviewer! </p>
+    <button id="loadBtn"> Load Novel </button>
+    <button id="addNvl"> Add Novel </button>
+    <button id="editNvl"> Edit </button>
+    <button id="saveBtn"> Save </button>
+
+    <script src="renderer.js"></script>
+    </body>
+</html>

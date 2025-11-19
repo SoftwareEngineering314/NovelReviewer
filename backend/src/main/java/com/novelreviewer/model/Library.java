@@ -28,6 +28,17 @@ public class Library {
     }
 
     public Map<String, Novel> getNovels() {
-        return this.novels;
+        return novels;
+    }
+
+    public List<Novel> getNovelList() {
+        return new ArrayList<>(novels.values());
+    }
+
+    public void setNovelsAsList(List<Novel> list) {
+        novels.clear();
+        for (Novel n : list) {
+            novels.put(n.getTitle(), n);
+        }
     }
 }

@@ -1,14 +1,17 @@
 package com.novelreviewer;
+import com.google.gson.reflect.TypeToken;
 import com.novelreviewer.model.Novel;
 import io.javalin.Javalin;
 import com.novelreviewer.service.LibraryService;
+import java.util.List;
+
 
 public class JavalinApp {
     public static void main(String [] args){
         LibraryService library = new LibraryService();
         Javalin app = Javalin.create().start(7000);
         app.get("/novels", ctx -> {
-            ctx.json(library.getLibrary().getNovels());
+            ctx.json(library.getLibrary().getNovelList());
         });
         app.post("/novels", ctx -> {
             Novel novel = ctx.bodyAsClass(Novel.class);
@@ -22,6 +25,11 @@ public class JavalinApp {
         app.post("/load", ctx -> {
             library.loadLibrary();
             ctx.result("Loaded");
+        });
+        app.post("/update", ctx -> {
+            List<Novel> updatedList = ctx.bodyAsClass(new TypeToken<List<Novel>>() {}.getType());
+            library.setNovels(updatedList);
+            ctx.status(201);
         });
 
     }

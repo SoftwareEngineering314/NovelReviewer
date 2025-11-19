@@ -5,6 +5,8 @@ import com.novelreviewer.model.Novel;
 import com.novelreviewer.utility.FileStorage;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 public class LibraryService {
     private final Library library = new Library();
@@ -24,5 +26,8 @@ public class LibraryService {
     }
     public void saveLibrary() throws IOException {
         storage.saveLibrary(library);
+    }
+    public void setNovels(List<Novel> novels){
+        library.setNovelsAsList(novels);
     }
 }

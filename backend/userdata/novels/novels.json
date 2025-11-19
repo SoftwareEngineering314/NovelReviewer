@@ -1,32 +1,7 @@
 {
-  "Shadow Slave": {
-    "Title": "Shadow Slave",
-    "Author": "Guiltythree",
-    "Chapters": 1600,
-    "Rating": 8.7
-  },
-  "": {
-    "Title": "",
-    "Author": "",
-    "Chapters": 0,
-    "Rating": 0.0
-  },
-  "Tribulation of Myriad Races": {
-    "Title": "Tribulation of Myriad Races",
-    "Author": "Fuck man idk",
-    "Chapters": 800,
-    "Rating": 8.7
-  },
-  "Omniscient Reader\u0027s Viewpoint": {
-    "Title": "Omniscient Reader\u0027s Viewpoint",
-    "Author": "Shing Shong",
-    "Chapters": 504,
-    "Rating": 9.7
-  },
-  "Harry Potter and the Sorcerer\u0027s Stone": {
-    "Title": "Harry Potter and the Sorcerer\u0027s Stone",
-    "Author": "J.K Rowling",
-    "Chapters": 30,
-    "Rating": 7.8
+  "tribulation": {
+    "Author": "me",
+    "Rating": "1800",
+    "Chapters": "5.6"
   }
 }

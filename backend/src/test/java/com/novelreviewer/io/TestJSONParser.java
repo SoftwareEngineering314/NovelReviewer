@@ -23,7 +23,7 @@ public class TestJSONParser {
     @Test
     public void testParseJSONFile() throws IOException {
         JSONParser parser = new JSONParser();
-        Library library = parser.parseJSONFile("src/test/resources/testdata1.json");
+        Library library = parser.parseJSONFile("backend/src/test/resources/testdata1.json");
 
         // Ensure something was parsed
         assertNotNull(library);

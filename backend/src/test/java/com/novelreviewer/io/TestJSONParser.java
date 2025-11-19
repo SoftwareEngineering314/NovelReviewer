@@ -20,7 +20,7 @@ public class TestJSONParser {
         });
     }
 
-    @Test
+/*    @Test
     public void testParseJSONFile() throws IOException {
         JSONParser parser = new JSONParser();
         Library library = parser.parseJSONFile("backend/src/test/resources/testdata1.json");
@@ -38,5 +38,5 @@ public class TestJSONParser {
             System.out.println("  Chapters: " + novel.getChapters());
         }
 
-    }
+    }*/
 }

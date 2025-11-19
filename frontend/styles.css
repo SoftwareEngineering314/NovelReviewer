@@ -30,3 +30,29 @@ input{
     max-width: 200px;
     min-width:20px;
 }
+tr {
+    position: relative;
+}
+
+
+.titleCell {
+    position: relative;
+    padding-right: 30px; /* space so title text doesn't overlap button */
+}
+
+.deleteBtn {
+    position: absolute;
+    right: 5px;       /* always at the end of the title cell */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.titleCell:hover .deleteBtn {
+    opacity: 1;
+}

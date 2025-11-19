@@ -5,5 +5,6 @@ contextBridge.exposeInMainWorld("backend", {
     getNovels: () => ipcRenderer.invoke("get-novels"),
     addNovel: (novel) => ipcRenderer.invoke("add-novel", novel),
     save: () => ipcRenderer.invoke("save"),
-    load: () => ipcRenderer.invoke("load")
+    load: () => ipcRenderer.invoke("load"),
+    setNovels: (novels) => ipcRenderer.invoke("set-novels", novels)
 });

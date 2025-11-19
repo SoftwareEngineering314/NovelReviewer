@@ -47,9 +47,19 @@ ipcMain.handle("add-novel", async (event, novel) => {
     });
     return res.status;
 });
+
 ipcMain.handle("save", async () => {
     const res = await fetch("http://localhost:7000/save", {
         method: "POST",
     })
     return res.text();
 })
+
+ipcMain.handle("set-novels", async (event, novelList) => {
+    const res = await fetch("http://localhost:7000/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(novelList)
+    });
+    return res.status;
+});
